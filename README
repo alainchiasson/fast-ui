@@ -1,1 +1,8 @@
 README
+
+To run :
+
+```
+uvicorn app:app --reload --reload-dir .
+```
+

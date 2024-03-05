@@ -1,5 +1,7 @@
 from datetime import date
 
+import uvicorn
+
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse
 from fastui import FastUI, AnyComponent, prebuilt_html, components as c
@@ -8,7 +10,6 @@ from fastui.events import GoToEvent, BackEvent
 from pydantic import BaseModel, Field
 
 app = FastAPI()
-
 
 class User(BaseModel):
     id: int
@@ -74,3 +75,7 @@ def user_profile(user_id: int) -> list[AnyComponent]:
 async def html_landing() -> HTMLResponse:
     """Simple HTML page which serves the React app, comes last as it matches all paths."""
     return HTMLResponse(prebuilt_html(title='FastUI Demo'))
+
+
+if __name__ == "__main__":
+    uvicorn.run("app:app", port=5000, log_level="info")
