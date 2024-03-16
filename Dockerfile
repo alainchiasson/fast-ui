@@ -1,4 +1,4 @@
-FROM python:latest
+FROM --platform=linux/amd64  python:latest
 
 RUN pip install pip --upgrade
 
